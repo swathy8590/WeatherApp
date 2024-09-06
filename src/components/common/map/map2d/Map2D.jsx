@@ -36,7 +36,7 @@ function Map2D() {
         <MapContainer center={defaultCenter} zoom={defaultZoom}  >
           <TileLayer
 
-            url={state && state.theme?.colorMode === "dark" ? "https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.png"
+            url={state && state.theme?.colorMode === "dark" ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
               : "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}"}
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />

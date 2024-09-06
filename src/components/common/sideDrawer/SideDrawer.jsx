@@ -92,10 +92,14 @@ function SideDrawer() {
     };
 
     return (
-        <> <Box sx={{ display: 'flex', background: state.theme?.backgroundColor, zIndex: 999 }}>
-            <Drawer variant="permanent" open={open} PaperProps={{
+        <> <Box sx={{ display: 'flex', background: state.theme?.backgroundColor, }}>
+            <Drawer variant="permanent" open={open} sx={{
+                position: 'relative',
+                zIndex: 99
+            }} PaperProps={{
                 sx: {
                     backgroundColor: state.theme?.backgroundColor,
+
 
 
 

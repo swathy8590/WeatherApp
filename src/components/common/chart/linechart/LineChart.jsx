@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import ReactApexChart from 'react-apexcharts'
 import { Context } from '../../../../pages/home/Home'
 import moment from 'moment'
-import { colors } from '@mui/material'
 
 const LineChart = ({ dataType, chartVal, value }) => {
     const { state, dispatch } = useContext(Context);

@@ -78,7 +78,7 @@ const BottomDrawer = () => {
           },
         }}
       />
-      <Box sx={{ textAlign: 'center', pt: 1, zIndex: 99999, }}>
+      <Box sx={{ textAlign: 'center', pt: 1, zIndex: 9999, }}>
       </Box>
       <SwipeableDrawer
         className='bottomdrawer'
@@ -101,11 +101,7 @@ const BottomDrawer = () => {
           visibility: 'visible',
           right: 0,
           left: 0,
-          // background: state.theme?.backgroundColor,
           color: state.theme?.color,
-          // border: '1px solid #C5C5C5',
-          //backdropFilter: ` blur(2px) saturate(180%)`,
-          //webkitBackdropFilter: `blur(20px) saturate(180%)`,
           backgroundColor: state.theme.colorMode === "dark" ? `rgba(255, 255, 255, 0)` : `rgba(255, 255, 255, 75%)`
         }}
       >

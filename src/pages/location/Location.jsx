@@ -4,14 +4,8 @@ import AirWidgetDark from '../../components/common/locationComponents/airWidget/
 import { Context } from '../home/Home'
 import PollenWidget from '../../components/common/locationComponents/PollenWidget/PollenWidget'
 import PollenWidgetDark from '../../components/common/locationComponents/PollenWidget/PollenWidgetDark'
-import FirRiskIndex from '../../components/common/locationComponents/fire/FirRiskIndex'
-import FireRiskDark from '../../components/common/locationComponents/fire/FireRiskDark'
-import { Box, Grid, Stack } from '@mui/material'
-// import WeatherWidgetDark from '../../components/common/weatherwidget/WeatherWidgetDark'
-// import WeatherWidget from '../../components/common/weatherwidget/WeatherWidget'
-// import CurrentCardLocation from '../../components/common/locationComponents/card/CurrentCardLocation'
+import { Grid, } from '@mui/material'
 import CurrentCard from '../../components/common/card/CurrentCard'
-import Navigation from '../../components/navigation/Navigation'
 
 
 
