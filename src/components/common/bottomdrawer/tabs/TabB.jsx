@@ -71,9 +71,9 @@ const TabB = () => {
                                 }
                             }}
                         >
-                            <Tab label="Daily" value="1" sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />
-                            <Tab label="Hourly" value="2" sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />
-                            <Tab label="minutely" value="3" sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />
+                            <Tab scrollButtons={"on"} label="Daily" value="1" sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />
+                            <Tab scrollButtons={"on"} label="Hourly" value="2" sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />
+                            <Tab scrollButtons={"on"} label="minutely" value="3" sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />
                         </TabList>
                     </Box>
                     <Box
@@ -104,7 +104,7 @@ const TabB = () => {
                                         >
 
                                             {Object.keys(state && state.api.weatherData !== "" && state?.api.weatherData?.daily[0]?.values).map((value, index) => <Tab variant="scrollable"
-                                                scrollButtons="auto" label={value} value={index + 1} sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />)}
+                                                scrollButtons="on" label={value} value={index + 1} sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />)}
                                         </TabList>
                                     </Box>
                                     <Box
@@ -202,7 +202,7 @@ const TabB = () => {
                                         >
 
                                             {Object.keys(state && state.api.weatherData !== "" && state?.api.weatherData?.hourly[100]?.values).map((hValue, hIndx) => <Tab variant="scrollable"
-                                                scrollButtons="auto" label={hValue} index={hIndx + 1} sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />)}
+                                                scrollButtons="on" label={hValue} index={hIndx + 1} sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />)}
 
                                         </TabList>
 
