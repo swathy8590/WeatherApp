@@ -24,7 +24,7 @@ const PollenWidget = () => {
 
     return (
         <>
-            <div style={{ paddingBottom: "22px", color: '#000000', }}>
+            <div style={{ paddingBottom: "22px", color: '#000000', paddingTop: '20px' }}>
                 <p style={{ fontSize: '16px' }}>Air Quality and Pollen</p>
 
                 <div className="tomorrow"
