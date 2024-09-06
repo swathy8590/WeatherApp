@@ -5,11 +5,10 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Context } from '../../../../pages/home/Home';
 import LineChart from '../../chart/linechart/LineChart';
 import moment from 'moment';
-import { createTheme, Fab, styled, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, ThemeProvider, ToggleButtonGroup, Typography } from '@mui/material';
+import { createTheme, styled, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, ThemeProvider, ToggleButtonGroup, Typography } from '@mui/material';
 import MuiToggleButton from '@mui/material/ToggleButton';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import ListAltIcon from '@mui/icons-material/ListAlt';
-import { WiDayCloudy, WiDaySunny, WidDayCloudy } from 'weather-icons-react';
 
 const TabB = () => {
     const { state, dispatch } = useContext(Context);
@@ -51,7 +50,6 @@ const TabB = () => {
             },
         },
     });
-    //console.log(state.theme.tabSelectColor)
 
     return (
         <div>
@@ -318,7 +316,6 @@ const TabB = () => {
                                             overflow: 'auto',
                                             background: "rgba(255, 255, 255, 0)",
                                             color: "#E1E1E1",
-                                            // border: '1px solid #C5C5C5',
                                         }}
                                     >
                                         {Object.keys(state && state.api.weatherData !== "" && state?.api.weatherData?.minutely[0].values).map((minValue, minIndex) => <TabPanel value={minIndex} key={minIndex} sx={{ color: "red" }} >
@@ -385,8 +382,6 @@ const TabB = () => {
 
 
                                         </TabPanel>)}
-
-                                        {/* <TabPanel value="2"><LineChart stateType="daily" /></TabPanel> */}
                                     </Box>
 
 

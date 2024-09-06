@@ -18,7 +18,7 @@ const Map3D = ({ width, handler }) => {
         type: 'geoLocation',
         payload: position.coords
       });
-      globeRef.current.pointOfView({ lat: position.coords.latitude, lng: position.coords.longitude, altitude: mediaQuary && mediaQuary.mobile ? 3 : 2 })
+      globeRef.current.pointOfView({ lat: position.coords.latitude, lng: position.coords.longitude, altitude: mediaQuary && mediaQuary.mobile ? 5 : 2 })
 
     }
     )

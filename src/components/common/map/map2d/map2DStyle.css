@@ -2,8 +2,9 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 70px;
+      left: 0px;
       right: 0;
+      z-index: 0;
   }
 
   .leaflet-bar {

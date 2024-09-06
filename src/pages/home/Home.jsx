@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer, useRef, useState } from "react";
+import React, { createContext, useReducer, useState } from "react";
 import { useTheme } from "@emotion/react";
 import { Box, Fab } from "@mui/material";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -26,8 +26,6 @@ const drawerWidth = 240;
 export const Context = createContext()
 
 function Home() {
-
-  // const [latlog, setLatlog] = useState(null);
   const target = React.useRef()
   const [width, height] = useSize(target)
   const theme = useTheme();
@@ -60,7 +58,6 @@ function Home() {
     )
     setmode(!mode)
   }
-  // console.log(state)
   let { pathname } = useLocation()
 
 

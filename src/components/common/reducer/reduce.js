@@ -25,16 +25,10 @@ export const initializer =
     searchData: null,
     cardCurrentLatlang: ""
   },
-
-
-
-
-
 }
 
 
 export const reducefn = (value, action) => {
-
 
   switch (action.type) {
     case "whiteMOde":
@@ -95,9 +89,6 @@ export const reducefn = (value, action) => {
         ...value, theme: { ...value.theme, drawerOpen: action.payload }
 
       }
-
-
-
 
     default: return value;
 
