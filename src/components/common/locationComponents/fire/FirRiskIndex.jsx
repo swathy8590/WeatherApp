@@ -27,7 +27,7 @@ const FirRiskIndex = () => {
         <>
             <div style={{ paddingBottom: "22px", color: '#000000', width: "250px" }}>
                 <p style={{ textAlign: 'center', fontSize: '20px' }}>Fire Risk Index</p>
-                <div class="tomorrow"
+                <div className="tomorrow"
                     data-location-id="131617,131617,133024,131517,133210,142001"
                     data-language="EN"
                     data-unit-system="METRIC"

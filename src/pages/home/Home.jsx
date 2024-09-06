@@ -18,6 +18,7 @@ import WeatherWidgetDark from "../../components/common/weatherwidget/WeatherWidg
 import { Outlet, useLocation } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 import CurrentCard from "../../components/common/card/CurrentCard";
+import Navigation from "../../components/navigation/Navigation";
 
 
 
@@ -39,6 +40,7 @@ function Home() {
   const isDesktop = useMediaQuery({
     query: '(min-width: 600px)'
   })
+  const isMobileone = useMediaQuery({ query: '(max-width: 750px)' })
 
   const isMobile = useMediaQuery({ query: '(max-width: 800px)' })
 
@@ -65,17 +67,17 @@ function Home() {
   return (
     <>
 
-      <Context.Provider value={{ state: state, dispatch: dispatch, mediaQuery: { desktop: isDesktop, mobile: isMobile } }}>
+      <Context.Provider value={{ state: state, dispatch: dispatch, mediaQuery: { desktop: isDesktop, mobile: isMobile, mobileone: isMobileone } }}>
         <Box sx={{ display: 'flex' }}>
-          <SideDrawer />
+          {!isMobile ? <SideDrawer /> : <Navigation />}
 
 
 
-          <Box ref={target} sx={{ bgcolor: state.theme.mainBackgroundColor, height: '100vh', width: open ? `calc(100% - ${drawerWidth + 72}px)` : `calc(100% - 72px)` }}  >
+          <Box ref={target} sx={{ bgcolor: state.theme.mainBackgroundColor, height: '100vh', width: !isMobile ? (open ? `calc(100% - ${drawerWidth + 72}px)` : `calc(100% - 72px)`) : "100%" }}  >
             {pathname && pathname === "/" && <Search />}
             <Box sx={{ textAlign: 'end' }}>
               <Fab size="small" color="#ffffff" aria-label="add"
-                sx={{ m: 3, position: 'absolute', top: "0px", right: "0px", background: state.theme?.backgroundColor, color: state.theme?.color, zIndex: 99991 }}
+                sx={{ m: 3, position: 'absolute', right: "0px", background: state.theme?.backgroundColor, color: state.theme?.color, zIndex: 99991, top: isMobile ? "60px" : "10px", }}
                 onClick={showfn}>
 
                 {show ? <MapIcon sx={{ color: state.theme?.color }} />
@@ -83,7 +85,7 @@ function Home() {
               </Fab>
 
               <Fab size="small" aria-label="add"
-                sx={{ m: 3, position: 'absolute', top: "70px", right: "0px", background: state.theme?.backgroundColor, zIndex: 99991 }}
+                sx={{ m: 3, position: 'absolute', right: "0px", background: state.theme?.backgroundColor, zIndex: 99991, top: isMobile ? "120px" : "70px", }}
                 onClick={modefn} >
                 {mode ? <DarkModeIcon sx={{ color: state.theme?.color }} /> :
                   <LightModeIcon sx={{ color: state.theme?.color }} />}

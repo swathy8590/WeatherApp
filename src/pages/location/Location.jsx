@@ -11,6 +11,7 @@ import { Box, Grid, Stack } from '@mui/material'
 // import WeatherWidget from '../../components/common/weatherwidget/WeatherWidget'
 // import CurrentCardLocation from '../../components/common/locationComponents/card/CurrentCardLocation'
 import CurrentCard from '../../components/common/card/CurrentCard'
+import Navigation from '../../components/navigation/Navigation'
 
 
 
@@ -30,12 +31,13 @@ const Location = () => {
                 </Grid>
                 <Grid size={{ xs: 12, md: 6, lg: 6 }} px={2}>
 
-                    {state && state.theme.colorMode === 'dark' ? <PollenWidgetDark /> : <PollenWidget />}
+                    <>{!mediaQuery.mobileone ? state && state.theme.colorMode === 'dark' ? <PollenWidgetDark /> : <PollenWidget /> : ''}</>
 
                 </Grid>
 
+
                 <Grid size={{ xs: 12, md: 6, lg: 6 }} px={2}>
-                    <CurrentCard />
+                    {!mediaQuery.mobile ? <CurrentCard /> : ""}
                 </Grid>
             </Grid >
 

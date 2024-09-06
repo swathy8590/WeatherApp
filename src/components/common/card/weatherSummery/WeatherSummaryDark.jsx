@@ -24,7 +24,7 @@ const WeatherSummaryDark = () => {
 
 
 
-            <div class="tomorrow"
+            <div className="tomorrow"
                 data-location-id="131617"
                 data-language="EN"
                 data-unit-system="METRIC"

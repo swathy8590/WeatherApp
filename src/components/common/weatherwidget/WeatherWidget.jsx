@@ -26,7 +26,7 @@ const WeatherWidget = () => {
     return (
         <div style={{
             position: 'absolute', bottom: 0, zIndex: 9999, width: '60%', left: '100px'
-        }}> <div class="tomorrow"
+        }}> <div className="tomorrow"
             data-location-id=""
             data-language="EN"
             data-unit-system="METRIC"
