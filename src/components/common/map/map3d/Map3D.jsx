@@ -10,7 +10,6 @@ import whitebg from "../../../../asset/Images/whitebgg.png"
 const Map3D = ({ width, handler }) => {
   const { state, dispatch, mediaQuary } = useContext(Context);
   const globeRef = useRef()
-  const [geoLocate, setGeoLocate] = useState()
   const [autoRotateCtrl, setautoRotateCtrl] = useState(false)
 
   useEffect(() => {
