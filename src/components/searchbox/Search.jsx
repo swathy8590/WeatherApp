@@ -38,11 +38,11 @@ function Search() {
     return (
         <>
             <Stack spacing={2} sx={{
-                width: 300,
+                width: !mediaQuery.mobile ? 300 : "73%",
                 background: state.theme?.backgroundColor,
                 position: 'absolute',
                 top: '20px',
-                marginLeft: !mediaQuery.mobile ? '20px' : "160px",
+                marginLeft: !mediaQuery.mobile ? '20px' : "70px",
                 border: "1px solid state.theme?.borderColor",
                 zIndex: 999,
                 backdropFilter: ` blur(5px) saturate(180%)`,
