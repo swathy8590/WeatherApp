@@ -24,7 +24,7 @@ const AirWidget = () => {
     }, [])
     return (
         <>
-            <div style={{ paddingBottom: "22px", color: '#000000', width: "100%", paddingTop: '20px' }}>
+            <div style={{ paddingBottom: "22px", color: '#000000', width: "100%", paddingTop: '40px' }}>
                 <p style={{ fontSize: '16px' }}>Air Quality and Pollutants</p>
                 <div className="tomorrow"
                     data-location-id="131617"
