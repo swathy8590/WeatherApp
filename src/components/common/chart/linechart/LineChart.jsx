@@ -111,7 +111,7 @@ const LineChart = ({ dataType, chartVal, value }) => {
                 ]
             },
             grid: {
-                borderColor: state.fontColor,
+                borderColor: "#343746"
             }
         },
     }

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../../pages/home/Home';
-import { Autocomplete, Stack, TextField } from '@mui/material';
+import { Autocomplete, Divider, Stack, TextField } from '@mui/material';
 import axios from 'axios';
 
 function Search() {
-    const { state, dispatch } = useContext(Context)
+    const { state, dispatch, mediaQuery } = useContext(Context)
     const { REACT_APP_SEARCH, REACT_APP_SEARCH_API_KEY } = process.env
 
     const handleSearch = async (e) => {
@@ -27,9 +27,7 @@ function Search() {
 
 
     const handleChange = (e, value) => {
-        // console.log(value, state.api.searchData)
         const searchLatLng = state && state.api.searchData.filter(val => val.display_name === value);
-        // console.log({ lat: searchLatLng[0].lat, lng: searchLatLng[0].lon })
         dispatch({ type: "current-latlng", payload: { lat: searchLatLng[0].lat, lng: searchLatLng[0].lon } })
         console.log(state.api.currentLatlang)
 
@@ -44,23 +42,43 @@ function Search() {
                 background: state.theme?.backgroundColor,
                 position: 'absolute',
                 top: '20px',
-                marginLeft: '20px',
+                marginLeft: !mediaQuery.mobile ? '20px' : "160px",
                 border: "1px solid state.theme?.borderColor",
                 zIndex: 999,
                 backdropFilter: ` blur(5px) saturate(180%)`,
                 webkitBackdropFilter: `blur(20px) saturate(180%)`,
-                // backgroundColor: `rgba(225, 0, 0, .2)`
             }} >
                 <Autocomplete
                     autoComplete={true}
                     freeSolo
                     id="free-solo-2-demo"
                     disableClearable
+                    slotProps={{
+                        paper: {
+                            sx: {
+                                backgroundColor: state.theme?.backgroundColor,
+                                color: state.theme.color, minHeight: '35px'
+                            },
+                        },
+                    }}
+                    renderOption={(props, options) => {
+
+                        return (<>
+                            <span {...props} style={{
+                                backgroundColor: state.theme?.backgroundColor,
+                                color: state.theme.color, minHeight: '35px'
+                            }}>
+                                {options}
+
+                            </span>
+                            <Divider sx={{ bgcolor: state.theme.colorMode === "dark" ? "#36324f" : "" }} />
+                        </>
+                        );
+                    }}
                     options={state.api.searchName}
                     onChange={(e, value) => handleChange(e, value)}
                     renderInput={(params) => (
                         <TextField
-                            fontColor="red"
                             {...params}
                             style={{ color: 'red' }}
                             placeholder="Search Location"

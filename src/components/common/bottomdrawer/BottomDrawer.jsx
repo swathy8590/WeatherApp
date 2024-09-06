@@ -6,7 +6,6 @@ import { grey } from '@mui/material/colors';
 import axios from 'axios';
 import TabB from './tabs/TabB';
 import { Context } from '../../../pages/home/Home';
-import "./bottomStyle.css"
 
 const drawerBleeding = 56;
 
@@ -74,9 +73,8 @@ const BottomDrawer = () => {
           '.bottomdrawer.MuiDrawer-root > .MuiPaper-root': {
             height: `calc(75% - ${drawerBleeding}px)`,
             overflow: 'visible',
-            backdropFilter: ` blur(5px) saturate(180%)`,
-            webkitBackdropFilter: `blur(20px) saturate(180%)`,
-            backgroundColor: `rgba(255, 255, 255, 0)`
+            backdropFilter: ` blur(2px) saturate(180%)`,
+            backgroundColor: `rgba(255, 255, 255, 0%)`
           },
         }}
       />
@@ -94,32 +92,29 @@ const BottomDrawer = () => {
           keepMounted: false,
 
         }}
+      > <StyledBox
+        sx={{
+          position: 'absolute',
+          top: -drawerBleeding,
+          borderTopLeftRadius: 5,
+          borderTopRightRadius: 5,
+          visibility: 'visible',
+          right: 0,
+          left: 0,
+          // background: state.theme?.backgroundColor,
+          color: state.theme?.color,
+          // border: '1px solid #C5C5C5',
+          //backdropFilter: ` blur(2px) saturate(180%)`,
+          //webkitBackdropFilter: `blur(20px) saturate(180%)`,
+          backgroundColor: state.theme.colorMode === "dark" ? `rgba(255, 255, 255, 0)` : `rgba(255, 255, 255, 75%)`
+        }}
       >
-        <StyledBox
-          sx={{
-            position: 'absolute',
-            top: -drawerBleeding,
-            borderTopLeftRadius: 5,
-            borderTopRightRadius: 5,
-            visibility: 'visible',
-            right: 0,
-            left: 0,
-            // background: state.theme?.backgroundColor,
-            color: state.theme?.color,
-            // border: '1px solid #C5C5C5',
-            background: "rgba(255, 255, 255, 0.17)",
-            borderRadius: " 16px",
-            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-            backdropFilter: " blur(1.7px)",
-            webkitBackdropFilter: " blur(1.7px)",
-          }}
-        >
           <Puller />
-          <Typography sx={{ p: 2 }}></Typography>
+          <Typography sx={{ p: 2, backgroundColor: `rgba(255, 255, 255, 15%)` }}></Typography>
           <TabB />
         </StyledBox>
       </SwipeableDrawer>
-    </Root>
+    </Root >
   );
 };
 
