@@ -10,6 +10,7 @@ import MuiToggleButton from '@mui/material/ToggleButton';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 
+
 const TabB = () => {
     const { state, dispatch } = useContext(Context);
 
@@ -59,12 +60,18 @@ const TabB = () => {
                 <TabContext value={value}
                 >
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', color: "#E1E1E1" }}>
-                        <TabList onChange={handleChange} aria-label="lab API tabs example" sx={{
-                            ".Mui-selected": {
-                                fontWeight: "700",
-                                color: "#343746"
-                            },
-                        }}
+                        <TabList onChange={handleChange} variant="scrollable"
+                            scrollButtons
+                            allowScrollButtonsMobile aria-label="lab API tabs example" sx={{
+                                ".Mui-selected": {
+                                    fontWeight: "700",
+                                    color: "#343746"
+                                },
+
+                                ".MuiTabs-scrollButtons": {
+                                    color: state.theme.color
+                                }
+                            }}
                             TabIndicatorProps={{
                                 style: {
                                     backgroundColor: "#343746"
@@ -90,12 +97,19 @@ const TabB = () => {
                             <Box sx={{ width: '100%', typography: 'body1', background: "rgba(255, 255, 255, 0)" }}>
                                 <TabContext value={innerValue}>
                                     <Box sx={{ borderBottom: 1, borderColor: 'divider', color: "#E1E1E1" }}>
-                                        <TabList onChange={handleChangeInner} aria-label="lab API tabs example" sx={{
-                                            ".Mui-selected": {
-                                                fontWeight: "700",
-                                                color: "#343746"
-                                            },
-                                        }}
+                                        <TabList onChange={handleChangeInner}
+                                            variant="scrollable"
+                                            scrollButtons
+                                            allowScrollButtonsMobile aria-label="Daily" sx={{
+                                                ".Mui-selected": {
+                                                    fontWeight: "700",
+                                                    color: "#343746"
+                                                },
+
+                                                ".MuiTabs-scrollButtons": {
+                                                    color: state.theme.color
+                                                }
+                                            }}
                                             TabIndicatorProps={{
                                                 style: {
                                                     backgroundColor: "#343746"
@@ -175,6 +189,9 @@ const TabB = () => {
 
                                                         value={value}
                                                     />}</>}
+
+
+
                                             </Box>
 
                                         </TabPanel>)}
@@ -188,12 +205,18 @@ const TabB = () => {
                             <Box sx={{ width: '100%', typography: 'body1', background: "rgba(255, 255, 255, 0)" }}>
                                 <TabContext value={innerValue}>
                                     <Box sx={{ borderBottom: 1, borderColor: 'divider', color: "#E1E1E1" }}>
-                                        <TabList onChange={handleChangeInner} aria-label="lab API tabs example" sx={{
-                                            ".Mui-selected": {
-                                                fontWeight: "700",
-                                                color: "#343746"
-                                            },
-                                        }}
+                                        <TabList onChange={handleChangeInner} variant="scrollable"
+                                            scrollButtons
+                                            allowScrollButtonsMobile aria-label="Hourly" sx={{
+                                                ".Mui-selected": {
+                                                    fontWeight: "700",
+                                                    color: "#343746"
+                                                },
+
+                                                ".MuiTabs-scrollButtons": {
+                                                    color: state.theme.color
+                                                }
+                                            }}
                                             TabIndicatorProps={{
                                                 style: {
                                                     backgroundColor: "#343746"
@@ -201,8 +224,7 @@ const TabB = () => {
                                             }}
                                         >
 
-                                            {Object.keys(state && state.api.weatherData !== "" && state?.api.weatherData?.hourly[100]?.values).map((hValue, hIndx) => <Tab variant="scrollable"
-                                                scrollButtons="on" label={hValue} index={hIndx + 1} sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />)}
+                                            {Object.keys(state && state.api.weatherData !== "" && state?.api.weatherData?.hourly[100]?.values).map((hValue, hIndx) => <Tab label={hValue} index={hIndx + 1} sx={{ color: state.theme.colorMode === "dark" ? "#ffffff" : "#343746" }} />)}
 
                                         </TabList>
 
@@ -289,12 +311,18 @@ const TabB = () => {
                             <Box sx={{ width: '100%', typography: 'body1', background: "rgba(255, 255, 255, 0)" }}>
                                 <TabContext value={innerValue}>
                                     <Box sx={{ borderBottom: 1, borderColor: 'divider', color: "#E1E1E1" }}>
-                                        <TabList onChange={handleChangeInner} aria-label="lab API tabs example" sx={{
-                                            ".Mui-selected": {
-                                                fontWeight: "700",
-                                                color: "#343746"
-                                            },
-                                        }}
+                                        <TabList onChange={handleChangeInner} variant="scrollable"
+                                            scrollButtons
+                                            allowScrollButtonsMobile aria-label="Minutly" sx={{
+                                                ".Mui-selected": {
+                                                    fontWeight: "700",
+                                                    color: "#343746"
+                                                },
+
+                                                ".MuiTabs-scrollButtons": {
+                                                    color: state.theme.color
+                                                }
+                                            }}
                                             TabIndicatorProps={{
                                                 style: {
                                                     backgroundColor: "#343746"

@@ -8,7 +8,7 @@ html {
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
-    /* make scrollbar transparent */
+
 }
 
 body {
@@ -18,4 +18,8 @@ body {
 a[href="https://www.tomorrow.io/weather-api/"] {
     display: none !important;
 
+}
+
+.MuiTabs-scrollButtons.Mui-disabled {
+    opacity: 0.3;
 }

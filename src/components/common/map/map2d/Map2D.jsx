@@ -33,7 +33,7 @@ function Map2D() {
   return (
     <div>
       <div>
-        <MapContainer center={defaultCenter} zoom={defaultZoom}  >
+        <MapContainer center={defaultCenter} zoom={defaultZoom} dragging={true}  >
           <TileLayer
 
             url={state && state.theme?.colorMode === "dark" ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
