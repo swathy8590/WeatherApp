@@ -89,7 +89,7 @@ function Home() {
 
           <Box ref={target} sx={{ bgcolor: state.theme.mainBackgroundColor, height: '100vh', width: !isMobile ? (open ? `calc(100% - ${drawerWidth + 72}px)` : `calc(100% - 72px)`) : "100%" }}  >
             {pathname && pathname === "/" && <Search />}
-            {mouse.mouseShow && <Box className="pulse" sx={{
+            {mouse.mouseShow && !isMobileone && <Box className="pulse" sx={{
               position: 'absolute', top: (mouse.mouseY) + "px",
               left: (mouse.mouseX) + "px", zIndex: 9999,
             }}>
@@ -127,7 +127,7 @@ function Home() {
 
                 {show ?
                   <Box onMouseMove={(e) => handleMouseMove(e)} onMouseLeave={handleMouseLeave} sx={{
-                    cursor: mouse.mouseShow && "none"
+                    cursor: mouse.mouseShow && !isMobileone && "none"
                   }}><Map3D width={width && width} /></Box> :
                   <Map2D />
                 }</>}
