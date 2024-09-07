@@ -6,6 +6,7 @@ import PollenWidget from '../../components/common/locationComponents/PollenWidge
 import PollenWidgetDark from '../../components/common/locationComponents/PollenWidget/PollenWidgetDark'
 import { Grid, } from '@mui/material'
 import CurrentCard from '../../components/common/card/CurrentCard'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 
@@ -18,6 +19,7 @@ const Location = () => {
 
 
             <Grid container spacing={2} sx={{ p: 5, gap: '50px' }}  >
+                <FontAwesomeIcon icon="fa-solid fa-hand-point-up" beatFade />
 
                 <Grid size={{ xs: 12, md: 6, lg: 6 }} px={2} >
 

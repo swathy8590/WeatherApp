@@ -61,7 +61,7 @@ const Map3D = ({ width, handler }) => {
         width={width}
         ref={globeRef}
         onGlobeClick={(e) => data3dHandler(e)}
-      //onGlobeReady={() => geoLocate && globeRef.current.pointOfView({ lng: geoLocate.coords.longitude, lat: geoLocate.coords.latitude, altitude: 1.5 })}
+        onGlobeReady={() => state && globeRef.current.pointOfView({ lat: state?.api?.cardCurrentLatlang?.latitude, lng: state?.api?.cardCurrentLatlang?.longitude, altitude: 1.5 })}
 
       />
     </>

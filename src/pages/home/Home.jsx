@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState } from "react";
+import React, { createContext, useEffect, useReducer, useRef, useState } from "react";
 import { useTheme } from "@emotion/react";
 import { Box, Fab } from "@mui/material";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -19,8 +19,9 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 import CurrentCard from "../../components/common/card/CurrentCard";
 import Navigation from "../../components/navigation/Navigation";
+import TouchAppIcon from '@mui/icons-material/TouchApp';
 
-
+import "./home.css"
 
 const drawerWidth = 240;
 export const Context = createContext()
@@ -33,6 +34,22 @@ function Home() {
   const [show, setShow] = useState(true)
   const [mode, setmode] = useState(true)
   const [state, dispatch] = useReducer(reducefn, initializer)
+  const [mouse, setMouse] = useState({ mouseX: 50, mouseY: 50, mouseShow: false })
+
+
+
+
+  const handleMouseMove = (e) => {
+
+    setMouse({ mouseX: e.clientX, mouseY: e.clientY, mouseShow: true })
+
+  }
+
+  const handleMouseLeave = (e) => {
+
+    setMouse({ mouseShow: false })
+
+  }
 
 
   const isDesktop = useMediaQuery({
@@ -63,7 +80,7 @@ function Home() {
 
   return (
     <>
-
+      {/* <FontAwesomeIcon icon="fa-solid fa-hand-point-up" beatFade /> */}
       <Context.Provider value={{ state: state, dispatch: dispatch, mediaQuery: { desktop: isDesktop, mobile: isMobile, mobileone: isMobileone } }}>
         <Box sx={{ display: 'flex' }}>
           {!isMobile ? <SideDrawer /> : <Navigation />}
@@ -72,6 +89,14 @@ function Home() {
 
           <Box ref={target} sx={{ bgcolor: state.theme.mainBackgroundColor, height: '100vh', width: !isMobile ? (open ? `calc(100% - ${drawerWidth + 72}px)` : `calc(100% - 72px)`) : "100%" }}  >
             {pathname && pathname === "/" && <Search />}
+            {mouse.mouseShow && <Box className="pulse" sx={{
+              position: 'absolute', top: (mouse.mouseY) + "px",
+              left: (mouse.mouseX) + "px", zIndex: 9999,
+            }}>
+              <TouchAppIcon sx={{
+                color: "rgba(225,225,225,.8)", fontSize: '30px'
+              }} />
+            </Box>}
             <Box sx={{ textAlign: 'end' }}>
               <Fab size="small" color="#ffffff" aria-label="add"
                 sx={{ m: 3, position: 'absolute', right: "0px", background: state.theme?.backgroundColor, color: state.theme?.color, zIndex: 99991, top: isMobile ? "60px" : "10px", }}
@@ -101,7 +126,9 @@ function Home() {
 
 
                 {show ?
-                  <Map3D width={width && width} /> :
+                  <Box onMouseMove={(e) => handleMouseMove(e)} onMouseLeave={handleMouseLeave} sx={{
+                    cursor: mouse.mouseShow && "none"
+                  }}><Map3D width={width && width} /></Box> :
                   <Map2D />
                 }</>}
 
