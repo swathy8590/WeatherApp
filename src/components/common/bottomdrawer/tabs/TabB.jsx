@@ -450,6 +450,7 @@ const TabB = () => {
                       ).map((hValue, hIndx) => (
                         <Tab
                           label={hValue}
+                          key={hIndx}
                           index={hIndx + 1}
                           sx={{
                             color:
@@ -721,6 +722,7 @@ const TabB = () => {
                       ).map((minValue, minIndex) => (
                         <Tab
                           label={minValue}
+                          key={minIndex}
                           sx={{
                             color:
                               state.theme.colorMode === "dark"

@@ -34,24 +34,24 @@ function Search() {
     recognition.onresult = async (event) => {
       const lastResultIndex = event.results.length - 1;
       const spokenText = event.results[lastResultIndex][0].transcript;
-      setTranscript(spokenText);
       console.log("Recognized text:", spokenText);
-      await axios
-        .get(
-          `${REACT_APP_SEARCH}/search?q=${spokenText}&api_key=${REACT_APP_SEARCH_API_KEY}`
-        )
-        .then((response) => response)
-        .then((response) => {
-          const locationName = response.data.map(
-            (val, inx) => val.display_name
-          );
-          dispatch({ type: "location-name", payload: locationName });
-          const searchData = response.data.map((val, inx) => val);
-          dispatch({ type: "search-data", payload: searchData });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      handleSearch(spokenText);
+      //   await axios
+      //     .get(
+      //       `${REACT_APP_SEARCH}/search?q=${spokenText}&api_key=${REACT_APP_SEARCH_API_KEY}`
+      //     )
+      //     .then((response) => response)
+      //     .then((response) => {
+      //       const locationName = response.data.map(
+      //         (val, inx) => val.display_name
+      //       );
+      //       dispatch({ type: "location-name", payload: locationName });
+      //       const searchData = response.data.map((val, inx) => val);
+      //       dispatch({ type: "search-data", payload: searchData });
+      //     })
+      //     .catch((error) => {
+      //       console.log(error);
+      //     });
     };
 
     recognition.onerror = (event) => {
@@ -74,7 +74,7 @@ function Search() {
   const handleSearch = async (e) => {
     await axios
       .get(
-        `${REACT_APP_SEARCH}/search?q=${e.target.value}&api_key=${REACT_APP_SEARCH_API_KEY}`
+        `${REACT_APP_SEARCH}/search?q=${e}&api_key=${REACT_APP_SEARCH_API_KEY}`
       )
       .then((response) => response)
       .then((response) => {
@@ -104,6 +104,8 @@ function Search() {
   };
 
   useEffect(() => start(), [voice]);
+
+  console.log(state.api.searchName);
 
   return (
     <>
@@ -139,6 +141,7 @@ function Search() {
             return (
               <>
                 <span
+                  key={options}
                   {...props}
                   style={{
                     backgroundColor: state.theme?.backgroundColor,
@@ -162,15 +165,15 @@ function Search() {
             <TextField
               {...params}
               style={{ color: "red" }}
-              autoFocus={transcript !== "" ? true : false}
+              autoFocus
               placeholder="Search Location"
               der="search location"
-              value={transcript !== "" ? transcript : state.api.searchName}
+              value={state.api.searchName}
               InputProps={{
                 style: { color: state.theme?.color },
                 ...params.InputProps,
                 type: "search",
-                onChange: handleSearch,
+                onChange: (e) => handleSearch(e.target.value),
               }}
             />
           )}
