@@ -17,59 +17,59 @@ function Search() {
     pause, // Function to pause the speech
     stop, // Function to stop the speech or remove it from queue
   } = useSpeech({ text: voice });
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
+  // const SpeechRecognition =
+  //   window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  useEffect(() => {
-    if (!SpeechRecognition) {
-      alert("Speech Recognition API is not supported in this browser");
-      return;
-    }
+  // useEffect(() => {
+  //   if (!SpeechRecognition) {
+  //     alert("Speech Recognition API is not supported in this browser");
+  //     return;
+  //   }
 
-    const recognition = new SpeechRecognition();
-    recognition.continuous = true; // Keep recognizing speech
-    recognition.interimResults = false; // Only capture final results
-    recognition.lang = "en-US"; // Set language
+  //   const recognition = new SpeechRecognition();
+  //   recognition.continuous = true; // Keep recognizing speech
+  //   recognition.interimResults = false; // Only capture final results
+  //   recognition.lang = "en-US"; // Set language
 
-    recognition.onresult = async (event) => {
-      const lastResultIndex = event.results.length - 1;
-      const spokenText = event.results[lastResultIndex][0].transcript;
-      console.log("Recognized text:", spokenText);
-      handleSearch(spokenText);
-      //   await axios
-      //     .get(
-      //       `${REACT_APP_SEARCH}/search?q=${spokenText}&api_key=${REACT_APP_SEARCH_API_KEY}`
-      //     )
-      //     .then((response) => response)
-      //     .then((response) => {
-      //       const locationName = response.data.map(
-      //         (val, inx) => val.display_name
-      //       );
-      //       dispatch({ type: "location-name", payload: locationName });
-      //       const searchData = response.data.map((val, inx) => val);
-      //       dispatch({ type: "search-data", payload: searchData });
-      //     })
-      //     .catch((error) => {
-      //       console.log(error);
-      //     });
-    };
+  //   recognition.onresult = async (event) => {
+  //     const lastResultIndex = event.results.length - 1;
+  //     const spokenText = event.results[lastResultIndex][0].transcript;
+  //     console.log("Recognized text:", spokenText);
+  //     handleSearch(spokenText);
+  //     //   await axios
+  //     //     .get(
+  //     //       `${REACT_APP_SEARCH}/search?q=${spokenText}&api_key=${REACT_APP_SEARCH_API_KEY}`
+  //     //     )
+  //     //     .then((response) => response)
+  //     //     .then((response) => {
+  //     //       const locationName = response.data.map(
+  //     //         (val, inx) => val.display_name
+  //     //       );
+  //     //       dispatch({ type: "location-name", payload: locationName });
+  //     //       const searchData = response.data.map((val, inx) => val);
+  //     //       dispatch({ type: "search-data", payload: searchData });
+  //     //     })
+  //     //     .catch((error) => {
+  //     //       console.log(error);
+  //     //     });
+  //   };
 
-    recognition.onerror = (event) => {
-      console.error("Speech recognition error", event.error);
-    };
+  //   recognition.onerror = (event) => {
+  //     console.error("Speech recognition error", event.error);
+  //   };
 
-    recognition.onend = () => {
-      recognition.start(); // Restart recognition if it ends
-    };
+  //   recognition.onend = () => {
+  //     recognition.start(); // Restart recognition if it ends
+  //   };
 
-    // Automatically start recognition when the component mounts
-    recognition.start();
+  //   // Automatically start recognition when the component mounts
+  //   recognition.start();
 
-    // Clean up: stop recognition when the component unmounts
-    return () => {
-      recognition.stop();
-    };
-  }, []);
+  //   // Clean up: stop recognition when the component unmounts
+  //   return () => {
+  //     recognition.stop();
+  //   };
+  // }, []);
 
   const handleSearch = async (e) => {
     await axios
