@@ -62,7 +62,7 @@ const Map3D = ({ width, handler }) => {
     globeRef.current.pointOfView(
       {
         ...e,
-        altitude: mediaQuery && mediaQuery.mobileone ? 4 : 0.9,
+        altitude: mediaQuery && mediaQuery.mobileone ? 1 : 0.9,
       },
       1000
     );
@@ -86,7 +86,7 @@ const Map3D = ({ width, handler }) => {
     globeRef.current.pointOfView(
       {
         ...state.api.currentLatlang,
-        altitude: mediaQuery && mediaQuery.mobileone ? 4 : 0.9,
+        altitude: mediaQuery && mediaQuery.mobileone ? 1 : 0.9,
       },
       1000
     );
@@ -111,7 +111,7 @@ const Map3D = ({ width, handler }) => {
         width={width}
         ref={globeRef}
         onGlobeClick={(e) => data3dHandler(e)}
-        //onGlobeReady={() => state && globeRef.current.pointOfView({ lat: state?.api?.cardCurrentLatlang?.latitude, lng: state?.api?.cardCurrentLatlang?.longitude, altitude: mediaQuery && mediaQuery.mobileone ? 4 : 2 })}
+      //onGlobeReady={() => state && globeRef.current.pointOfView({ lat: state?.api?.cardCurrentLatlang?.latitude, lng: state?.api?.cardCurrentLatlang?.longitude, altitude: mediaQuery && mediaQuery.mobileone ? 4 : 2 })}
       />
     </>
   );
