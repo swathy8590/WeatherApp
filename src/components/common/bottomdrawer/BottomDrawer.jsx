@@ -78,7 +78,7 @@ const BottomDrawer = () => {
           },
         }}
       />
-      <Box sx={{ textAlign: 'center', pt: 1, zIndex: 9999, }}>
+      <Box sx={{ textAlign: 'center', pt: 1, zIndex: 999999, }}>
       </Box>
       <SwipeableDrawer
         className='bottomdrawer'

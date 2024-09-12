@@ -24,7 +24,7 @@ const WeatherWidgetDark = () => {
 
     return (
         <div style={{
-            position: 'absolute', bottom: 0, zIndex: 9999, width: '60%', left: '100px'
+            position: 'absolute', bottom: 0, zIndex: 9, width: '60%', left: '100px'
         }}> <div className="tomorrow"
             data-location-id=""
             data-language="EN"

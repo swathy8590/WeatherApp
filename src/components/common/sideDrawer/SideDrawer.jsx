@@ -106,7 +106,7 @@ function SideDrawer() {
           open={open}
           sx={{
             position: "relative",
-            zIndex: 99999,
+            zIndex: 99,
           }}
           PaperProps={{
             sx: {
