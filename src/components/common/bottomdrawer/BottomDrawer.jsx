@@ -31,7 +31,7 @@ const Puller = styled('div')(({ theme }) => ({
 const BottomDrawer = () => {
 
   const { state, dispatch } = useContext(Context)
-  const [open, setOpen] = useState(false);
+  //const [open, setOpen] = useState(false);
   const { REACT_APP_WEATHER, REACT_APP_WEATHER_API_KEY } = process.env;
 
 

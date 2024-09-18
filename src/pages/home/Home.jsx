@@ -7,16 +7,11 @@ import React, {
 } from "react";
 import { useTheme } from "@emotion/react";
 import { Box, Fab } from "@mui/material";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import MapIcon from "@mui/icons-material/Map";
-
 import BottomDrawer from "../../components/common/bottomdrawer/BottomDrawer";
 import Map3D from "../../components/common/map/map3d/Map3D";
 import useSize from "@react-hook/size";
 import Map2D from "../../components/common/map/map2d/Map2D";
 import SideDrawer from "../../components/common/sideDrawer/SideDrawer";
-import ThreeDIcon from "@mui/icons-material/ThreeDRotation";
 import { reducefn, initializer } from "../../components/common/reducer/reduce";
 import Search from "../../components/searchbox/Search";
 import WeatherWidget from "../../components/common/weatherwidget/WeatherWidget";
@@ -25,7 +20,14 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import CurrentCard from "../../components/common/card/CurrentCard";
 import Navigation from "../../components/navigation/Navigation";
+
 import TouchAppIcon from "@mui/icons-material/TouchApp";
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import ThreeDIcon from "@mui/icons-material/ThreeDRotation";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import MapIcon from "@mui/icons-material/Map";
 
 import "./home.css";
 
@@ -45,10 +47,19 @@ function Home() {
     mouseY: 50,
     mouseShow: false,
   });
+  const [mute, setmute] = useState(true)
 
   const handleMouseMove = (e) => {
     setMouse({ mouseX: e.clientX, mouseY: e.clientY, mouseShow: true });
   };
+
+  const muteFn = () => {
+    dispatch({
+      type: "muteSound",
+      payload: !mute,
+    });
+    setmute(!mute)
+  }
 
   const handleMouseLeave = (e) => {
     setMouse({ mouseShow: false });
@@ -106,6 +117,29 @@ function Home() {
             }}
           >
             {pathname && pathname === "/" && <Search />}
+            <Fab
+              size="small"
+              color="#ffffff"
+              aria-label="add"
+              sx={{
+                m: 3,
+                position: "absolute",
+                marginLeft: "340px",
+                right: isMobile && "0px",
+                background: state.theme?.backgroundColor,
+                color: state.theme?.color,
+                zIndex: 99991,
+                top: isMobile ? "180px" : "5px",
+              }}
+              onClick={muteFn}
+            >
+              {state.theme.muteSound ? (
+                <VolumeUpIcon sx={{ color: state.theme?.color }} />
+
+              ) : (
+                <VolumeOffIcon sx={{ color: state.theme?.color }} />
+              )}
+            </Fab>
             {mouse.mouseShow && !isMobileone && (
               <Box
                 className="pulse"
@@ -177,9 +211,9 @@ function Home() {
                 ) : (
                   <>
                     {state &&
-                    state &&
-                    state.theme?.colorMode === "dark" &&
-                    !isTablet ? (
+                      state &&
+                      state.theme?.colorMode === "dark" &&
+                      !isTablet ? (
                       <WeatherWidgetDark />
                     ) : (
                       !isTablet && <WeatherWidget />
