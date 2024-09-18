@@ -32,7 +32,7 @@ const Map3D = ({ width, handler }) => {
         `Your Destination Latitude is ${JSON.stringify(
           position.coords.latitude
         )} and Longitude ${JSON.stringify(position.coords.longitude)}`
-      );
+      )
       globeRef.current.pointOfView(
         {
           lat: position.coords.latitude,
@@ -49,12 +49,22 @@ const Map3D = ({ width, handler }) => {
     globeRef.current.controls().autoRotateSpeed = 0.3;
   }, [autoRotateCtrl]);
 
+
+
+  useEffect(() => {
+
+    state.theme.muteSound === false ? pause() : start()
+  }, [state.theme.muteSound])
+  console.log(state.theme.muteSound)
+
   const data3dHandler = (e) => {
+
     setVoice(
       `Your Destination Latitude is ${JSON.stringify(
         e.lat
       )} and Longitude ${JSON.stringify(e.lng)}`
-    );
+    )
+      ;
     dispatch({
       type: "current-latlng",
       payload: e,
@@ -68,8 +78,7 @@ const Map3D = ({ width, handler }) => {
     );
     setautoRotateCtrl(true);
   };
-
-  useEffect(() => start(), [voice]);
+  useEffect(() => async () => state.theme.muteSound === true && start(), [voice])
 
   useEffect(() => {
     state.theme.drawerOpen === false &&
@@ -80,7 +89,7 @@ const Map3D = ({ width, handler }) => {
         },
         1000
       );
-  }, [state.theme.drawerOpen]);
+  }, [state.theme.drawerOpen,]);
 
   useEffect(() => {
     globeRef.current.pointOfView(

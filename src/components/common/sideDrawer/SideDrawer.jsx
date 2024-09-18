@@ -1,5 +1,15 @@
 import React, { useContext, useState } from "react";
+
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+
 import { styled } from "@mui/material/styles";
+import MuiAppBar from "@mui/material/AppBar";
+import MuiDrawer from "@mui/material/Drawer";
+import { Context } from "../../../pages/home/Home";
+import { Link } from "react-router-dom";
 import {
   Box,
   ListItemIcon,
@@ -9,15 +19,7 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import MuiAppBar from "@mui/material/AppBar";
-import MuiDrawer from "@mui/material/Drawer";
 
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import { Context } from "../../../pages/home/Home";
-import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 

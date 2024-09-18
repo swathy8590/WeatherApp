@@ -1,5 +1,6 @@
 export const initializer = {
   theme: {
+    // muteSound: true,
     backgroundColor:
       localStorage.getItem("theme") !== null
         ? JSON.parse(localStorage.getItem("theme")).backgroundColor
@@ -29,6 +30,7 @@ export const initializer = {
         ? JSON.parse(localStorage.getItem("theme")).mainBackgroundColor
         : "#000000",
     drawerOpen: false,
+
   },
 
   api: {
@@ -37,6 +39,7 @@ export const initializer = {
     searchName: [],
     searchData: null,
     cardCurrentLatlang: "",
+
   },
 };
 
@@ -115,6 +118,12 @@ export const reducefn = (value, action) => {
       return {
         ...value,
         theme: { ...value.theme, drawerOpen: action.payload },
+      };
+    case "muteSound":
+      console.log(action.payload);
+      return {
+        ...value,
+        theme: { ...value.theme, muteSound: action.payload },
       };
 
     default:
